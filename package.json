@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "d3": "^5.14.2",
     "debug": "~2.6.3",
     "express": "^4.15.3",
     "jade": "^1.11.0",
@@ -18,11 +21,10 @@
     "react-scripts": "1.0.10"
   },
   "scripts": {
-    "start":
-      "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
+    "start": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
     "build": "react-scripts build && mv build server",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001/"
 }

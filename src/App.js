@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Graph from './Graph';
 import './App.css';
 
 class App extends Component {
@@ -9,21 +9,29 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/message')
+    fetch('./typeform_response')
       .then(response => response.json())
-      .then(json => this.setState({ message: json }));
+      .then(json => {
+        console.log(json)
+        this.setState({ message: json.total_items })
+      });
   }
 
   render() {
+    let topics = ["Take it personally","Have a clear strategy","Find problems worth solving","Build & participate in ecosystems","Have cross-functional teams"];
+    let sectors = ['All','1','2','3','4','5']
+  
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>{this.state.message}</h2>
+        <div className='header'>
+          <div className="heading">How AI ready is <span className={'sectorName'}>Everybody</span>?</div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+          <Graph
+            topics= {topics}
+            sectors={sectors}
+          />
+        </div>
       </div>
     );
   }
